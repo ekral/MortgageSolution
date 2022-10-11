@@ -8,7 +8,7 @@ namespace SharedProject
 {
     public class CalculationService
     {
-        readonly int frequency = 12;
+        private readonly int frequency = 12;
 
         public double MonthlyPayment(double loanAmount, double interestRate, int loanTerm)
         {

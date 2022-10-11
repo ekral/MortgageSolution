@@ -12,8 +12,8 @@ namespace AvaloniaAplication
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public Model model;
-        public CalculationService calculationService;
+        private readonly Model model;
+        private readonly CalculationService calculationService;
 
         public double LoanAmount
         {

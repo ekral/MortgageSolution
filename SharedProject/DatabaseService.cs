@@ -13,22 +13,22 @@ namespace SharedProject
         /// <summary>
         /// Verifies that the database exists. And if it does not exist, it creates a new database.
         /// </summary>
-        public void EnsureCreated()
+        public async Task EnsureCreated()
         {
             throw new NotImplementedException();
         }
 
-        public Model GetById(int id)
+        public async Task<Model> GetById(int id)
         {
             throw  new NotImplementedException();
         }
 
-        public void Insert(Model model)
+        public async Task Insert(Model model)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Model model) 
+        public async Task Update(Model model) 
         {
             throw new NotImplementedException();
         }
