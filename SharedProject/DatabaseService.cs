@@ -8,6 +8,16 @@ namespace SharedProject
 {
     public class DatabaseService
     {
+        private const string Path = "database.db";
+
+        /// <summary>
+        /// Verifies that the database exists. And if it does not exist, it creates a new database.
+        /// </summary>
+        public void EnsureCreated()
+        {
+            throw new NotImplementedException();
+        }
+
         public Model GetById(int id)
         {
             throw  new NotImplementedException();
