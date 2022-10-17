@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32916.344
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedProject", "SharedProject\SharedProject.csproj", "{EBF35332-93CD-46DA-B6AF-B45ABA73272F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedProject", "SharedProject\SharedProject.csproj", "{EBF35332-93CD-46DA-B6AF-B45ABA73272F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaAplication", "AvaloniaAplication\AvaloniaAplication.csproj", "{44F7F391-B31E-48D0-B463-ABDEF01EB5C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaAplication", "AvaloniaAplication\AvaloniaAplication.csproj", "{44F7F391-B31E-48D0-B463-ABDEF01EB5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDatabaseTest", "ConsoleAppDatabaseTest\ConsoleAppDatabaseTest.csproj", "{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
