@@ -8,14 +8,17 @@ namespace SharedProject
 {
     public class DatabaseService
     {
-        private const string Path = "database.db";
+        private const string path = "database.db";
+        private readonly string connectionString;
+
+       
 
         /// <summary>
         /// Verifies that the database exists. And if it does not exist, it creates a new database.
         /// </summary>
         public async Task EnsureCreatedAsync()
         {
-            throw new NotImplementedException();
+            
         }
 
         public async Task<List<Model>> GetAll()
