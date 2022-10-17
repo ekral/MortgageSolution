@@ -18,6 +18,12 @@ namespace SharedProject
             throw new NotImplementedException();
         }
 
+        public async Task<List<Model>> GetAll()
+        {
+            throw new NotImplementedException();
+
+        }
+
         public async Task<Model> GetByIdAsync(int id)
         {
             throw  new NotImplementedException();
