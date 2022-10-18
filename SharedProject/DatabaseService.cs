@@ -42,12 +42,12 @@ namespace SharedProject
                 )
             ";
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
             return true;
         }
 
-        public async Task<List<Model>> GetAll()
+        public async Task<List<Model>> GetAllAsync()
         {
             throw new NotImplementedException();
 
