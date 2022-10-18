@@ -7,6 +7,11 @@
         public double InterestRate { get; set; }
         public int LoanTerm { get; set; }
 
+        public Model()
+        {
+            
+        }
+        
         public Model(double loanAmount, double interestRate, int loanTerm)
         {
             LoanAmount = loanAmount;
