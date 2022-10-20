@@ -17,7 +17,7 @@ namespace SharedProject
             SqliteConnectionStringBuilder builder = new SqliteConnectionStringBuilder();
             builder.DataSource = path;
 
-            connectionString = builder.ToString();
+            connectionString = builder.ConnectionString;
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace SharedProject
             throw new NotImplementedException();
         }
 
-        public void DeleteAsync(Model model) 
+        public async Task DeleteAsync(Model model) 
         {
             throw new NotImplementedException();
         }
