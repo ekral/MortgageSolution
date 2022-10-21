@@ -54,7 +54,36 @@ namespace SharedProject
 
         public async Task<List<Model>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            // Dodelat SQL prikaz, ktery vrati Id, LoanAmount, InterestRate, LoanTerm
+            // bez pouziti *
+
+            command.CommandText =
+            @$"
+                SELECT Id, LoanAmount, InterestRate, LoanTerm FROM Mortgage
+            ";
+
+            List<Model> models = new List<Model>();
+
+            SqliteDataReader reader = await command.ExecuteReaderAsync();
+
+            if(reader.HasRows)
+            {
+                while(await reader.ReadAsync())
+                {
+                    Model model = new Model();
+
+                    model.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    model.LoanAmount = reader.GetDouble(reader.GetOrdinal("LoanAmount"));
+                    model.InterestRate = reader.GetDouble(reader.GetOrdinal("InterestRate"));
+                    model.LoanTerm = reader.GetInt32(reader.GetOrdinal("LoanTerm"));
+                }
+            }
+            return models;
 
         }
 
