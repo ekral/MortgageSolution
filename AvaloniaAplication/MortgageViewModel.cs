@@ -1,14 +1,9 @@
 ﻿using SharedProject;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AvaloniaAplication
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class MortgageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -21,6 +16,7 @@ namespace AvaloniaAplication
             set
             {
                 model.LoanAmount = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanAmount)));
                 Calculate();
             }
         }
@@ -31,6 +27,7 @@ namespace AvaloniaAplication
             set
             {
                 model.InterestRate = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InterestRate)));
                 Calculate();
             }
         }
@@ -41,6 +38,7 @@ namespace AvaloniaAplication
             set
             {
                 model.LoanTerm = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanTerm)));
                 Calculate();
             }
         }
@@ -57,9 +55,9 @@ namespace AvaloniaAplication
             }
         }
 
-        public ViewModel()
+        public MortgageViewModel(Model model)
         {
-            model = new Model(8000000.0, 6.0, 30);
+            this.model = model;
             calculationService = new CalculationService();
 
             Calculate();

@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaAplication.MortgagesListWindow"
+        Title="MortgagesListWindow">
+	<StackPanel>
+		<ListBox Items="{Binding Mortgages}" SelectionMode="Single" SelectedItem="{Binding SelectedMortgage}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border Background="Gray" CornerRadius="4" Padding="4">
+						<StackPanel>
+							<TextBlock Text="{Binding LoanAmount}"/>
+							<TextBlock Text="{Binding InterestRate}"/>
+							<TextBlock Text="{Binding LoanTerm}"/>
+							<TextBlock Text="{Binding MonthlyPayment, StringFormat='Monthly Payment: {0:C2}'}"/>
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<TextBlock Text="Loan Amount"/>
+		<NumericUpDown Value="{Binding SelectedMortgage.LoanAmount}" Increment="200000.0"/>
+
+		<TextBlock Text="Interest Rate"/>
+		<NumericUpDown Value="{Binding SelectedMortgage.InterestRate}"/>
+
+		<TextBlock Text="Loan Term"/>
+		<NumericUpDown Value="{Binding SelectedMortgage.LoanTerm}"/>
+
+		<TextBlock Text="{Binding SelectedMortgage.MonthlyPayment, StringFormat='Monthly Payment: {0:C2}'}"/>
+		
+	</StackPanel>
+</Window>

@@ -11,11 +11,14 @@ namespace AvaloniaAplication
             AvaloniaXamlLoader.Load(this);
         }
 
-        public override void OnFrameworkInitializationCompleted()
+        public async override void OnFrameworkInitializationCompleted()
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow() { DataContext = new ViewModel() };
+                MainViewModel mainViewModel = new MainViewModel();
+                desktop.MainWindow = new MortgagesListWindow() { DataContext = mainViewModel };
+                await mainViewModel.LoadMortgages();
+
             }
 
             base.OnFrameworkInitializationCompleted();
