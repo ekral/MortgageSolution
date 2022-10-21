@@ -15,7 +15,7 @@ namespace SharedProject
         
         public DatabaseService()
         {
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             path = Path.Join(folder, fileName);
             
             SqliteConnectionStringBuilder builder = new SqliteConnectionStringBuilder();
