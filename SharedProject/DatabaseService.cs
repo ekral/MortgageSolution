@@ -81,6 +81,8 @@ namespace SharedProject
                     model.LoanAmount = reader.GetDouble(reader.GetOrdinal("LoanAmount"));
                     model.InterestRate = reader.GetDouble(reader.GetOrdinal("InterestRate"));
                     model.LoanTerm = reader.GetInt32(reader.GetOrdinal("LoanTerm"));
+
+                    models.Add(model);
                 }
             }
             return models;

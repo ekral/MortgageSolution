@@ -9,6 +9,11 @@ if(await databaseService.EnsureCreatedAsync())
     await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
 }
 
+List<Model> models = await databaseService.GetAllAsync();
 
+foreach (Model model in models)
+{
+    Console.WriteLine($"{model.Id, 3} {model.LoanAmount, 16:C1} {model.InterestRate, 4:F1} {model.LoanTerm, 3}");
+}
 
 
