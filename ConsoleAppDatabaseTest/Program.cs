@@ -9,7 +9,7 @@ if(await databaseService.EnsureCreatedAsync())
     await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
 }
 
-//await databaseService.DeleteAsync(new Model() { Id = 3 });
+// await databaseService.DeleteAsync(new Model() { Id = 3 });
 
 Model? zmena = await databaseService.GetByIdAsync(2);
 
