@@ -35,6 +35,7 @@ namespace SharedProject
             await connection.OpenAsync();
 
             SqliteCommand command = connection.CreateCommand();
+
             command.CommandText =
             @"
                 CREATE TABLE Mortgage 
@@ -64,7 +65,22 @@ namespace SharedProject
 
         public async Task InsertAsync(Model model)
         {
-            throw new NotImplementedException();
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            command.CommandText =
+            @$"
+                INSERT INTO Mortgage (LoanAmount, InterestRate, LoanTerm)
+                VALUES (@LoanAmount, @InterestRate, @LoanTerm)
+            ";
+
+            command.Parameters.Add("@LoanAmount", SqliteType.Real).Value = model.LoanAmount;
+            command.Parameters.Add("@InterestRate", SqliteType.Real).Value = model.InterestRate;
+            command.Parameters.Add("@LoanTerm", SqliteType.Integer).Value = model.LoanTerm;
+       
+            int count = await command.ExecuteNonQueryAsync();
         }
 
         public async Task UpdateAsync(Model model) 
