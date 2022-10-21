@@ -116,7 +116,28 @@ namespace SharedProject
 
         public async Task UpdateAsync(Model model) 
         {
-            throw new NotImplementedException();
+            // Zmenit LoanAmount, InterestRate a LoanTerm 
+            // u radku s id model.Id
+
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            command.CommandText =
+            @$"
+                UPDATE Mortgage SET LoanAmount = @LoanAmount,
+                                    InterestRate = @InterestRate,
+                                    LoanTerm = @LoanTerm
+                WHERE Id = @Id
+            ";
+
+            command.Parameters.Add("@LoanAmount", SqliteType.Real).Value = model.LoanAmount;
+            command.Parameters.Add("@InterestRate", SqliteType.Real).Value = model.InterestRate;
+            command.Parameters.Add("@LoanTerm", SqliteType.Integer).Value = model.LoanTerm;
+            command.Parameters.Add("@Id", SqliteType.Integer).Value = model.Id;
+
+            int count = await command.ExecuteNonQueryAsync();
         }
 
         public async Task DeleteAsync(Model model) 
