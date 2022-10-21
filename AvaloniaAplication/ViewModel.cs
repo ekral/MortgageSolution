@@ -47,11 +47,10 @@ namespace AvaloniaAplication
 
         private double _monthlyPayment;
 
-
         public double MonthlyPayment
         {
             get => _monthlyPayment;
-            set
+            private set
             {
                 _monthlyPayment = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MonthlyPayment)));
