@@ -29,7 +29,7 @@ namespace SharedProject
         /// </summary>
         public async Task<bool> EnsureCreatedAsync()
         {
-            if (File.Exists(fileName)) return false;
+            if (File.Exists(path)) return false;
 
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
