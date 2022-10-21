@@ -9,11 +9,15 @@ namespace SharedProject
 {
     public class DatabaseService
     {
-        private const string path = "database.db";
+        private const string fileName = "database.db";
+        private readonly string path;
         private readonly string connectionString;
-
+        
         public DatabaseService()
         {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            path = Path.Join(folder, fileName);
+            
             SqliteConnectionStringBuilder builder = new SqliteConnectionStringBuilder();
             builder.DataSource = path;
 
@@ -25,7 +29,7 @@ namespace SharedProject
         /// </summary>
         public async Task<bool> EnsureCreatedAsync()
         {
-            if (File.Exists(path)) return false;
+            if (File.Exists(fileName)) return false;
 
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
