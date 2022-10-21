@@ -39,9 +39,9 @@ namespace AvaloniaAplication
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(DatabaseService databaseService)
         {
-            databaseService = new DatabaseService();
+            this.databaseService = databaseService;
         }
 
         public async Task LoadMortgages()
@@ -50,6 +50,16 @@ namespace AvaloniaAplication
 
             Mortgages = new ObservableCollection<MortgageViewModel>(models.Select(x => new MortgageViewModel(x)));
             SelectedMortgage = Mortgages.FirstOrDefault();
+        }
+
+        public async Task SaveSelected()
+        {
+            // TODO dialog box
+
+            if (SelectedMortgage is not null)
+            {
+                await databaseService.UpdateAsync(SelectedMortgage.Model);
+            }
         }
     }
 }

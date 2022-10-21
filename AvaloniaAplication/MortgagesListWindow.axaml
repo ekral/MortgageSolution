@@ -31,6 +31,8 @@
 		<NumericUpDown Value="{Binding SelectedMortgage.LoanTerm}"/>
 
 		<TextBlock Text="{Binding SelectedMortgage.MonthlyPayment, StringFormat='Monthly Payment: {0:C2}'}"/>
-		
+
+		<Button Content="Save" Command="{Binding SaveSelected}"/>
+
 	</StackPanel>
 </Window>

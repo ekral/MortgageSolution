@@ -16,5 +16,6 @@
 		<NumericUpDown Value="{Binding LoanTerm}"/>
 		
 		<TextBlock Text="{Binding MonthlyPayment, StringFormat='Monthly Payment: {0:C2}'}"/>
+		
 	</StackPanel>
 </Window>

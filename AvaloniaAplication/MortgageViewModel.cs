@@ -7,15 +7,16 @@ namespace AvaloniaAplication
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private readonly Model model;
+        public Model Model { get; }
+
         private readonly CalculationService calculationService;
 
         public double LoanAmount
         {
-            get => model.LoanAmount;
+            get => Model.LoanAmount;
             set
             {
-                model.LoanAmount = value;
+                Model.LoanAmount = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanAmount)));
                 Calculate();
             }
@@ -23,10 +24,10 @@ namespace AvaloniaAplication
 
         public double InterestRate
         {
-            get => model.InterestRate;
+            get => Model.InterestRate;
             set
             {
-                model.InterestRate = value;
+                Model.InterestRate = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InterestRate)));
                 Calculate();
             }
@@ -34,10 +35,10 @@ namespace AvaloniaAplication
 
         public int LoanTerm
         {
-            get => model.LoanTerm;
+            get => Model.LoanTerm;
             set
             {
-                model.LoanTerm = value;
+                Model.LoanTerm = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanTerm)));
                 Calculate();
             }
@@ -57,7 +58,7 @@ namespace AvaloniaAplication
 
         public MortgageViewModel(Model model)
         {
-            this.model = model;
+            this.Model = model;
             calculationService = new CalculationService();
 
             Calculate();

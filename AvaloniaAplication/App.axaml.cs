@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using SharedProject;
 
 namespace AvaloniaAplication
 {
@@ -15,10 +16,24 @@ namespace AvaloniaAplication
         {
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                MainViewModel mainViewModel = new MainViewModel();
-                desktop.MainWindow = new MortgagesListWindow() { DataContext = mainViewModel };
-                await mainViewModel.LoadMortgages();
+                DatabaseService databaseService = new DatabaseService();
+            
+                // TODO prevest na IoC container
+                // zavolat EnsureCreated
 
+                MainViewModel mainViewModel = new MainViewModel(databaseService);
+                desktop.MainWindow = new MortgagesListWindow() { DataContext = mainViewModel };
+
+                if(await databaseService.EnsureCreatedAsync())
+                {
+                    await databaseService.InsertAsync(new Model(8000000.0, 6.0, 30));
+                    await databaseService.InsertAsync(new Model(4000000.0, 5.7, 20));
+                    await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
+                }
+
+                await mainViewModel.LoadMortgages();
+                
+                // TODO overit do ktere metody dat asynchronni inicializaci
             }
 
             base.OnFrameworkInitializationCompleted();
