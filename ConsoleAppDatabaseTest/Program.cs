@@ -9,8 +9,18 @@ if(await databaseService.EnsureCreatedAsync())
     await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
 }
 
+//await databaseService.DeleteAsync(new Model() { Id = 3 });
 
-await databaseService.UpdateAsync(new Model(4800000.0, 5.6, 15) { Id = 1 });
+Model? zmena = await databaseService.GetByIdAsync(2);
+
+if (zmena is not null)
+{
+    zmena.LoanAmount = 4600000.0;
+    zmena.InterestRate = 5.0;
+    zmena.LoanTerm = 5;
+
+    await databaseService.UpdateAsync(zmena);
+}
 
 List<Model> models = await databaseService.GetAllAsync();
 

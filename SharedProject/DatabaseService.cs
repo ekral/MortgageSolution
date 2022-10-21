@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,9 +92,40 @@ namespace SharedProject
 
         public async Task<Model?> GetByIdAsync(int id)
         {
-            // vratime prvni radek, ktery nacteme
-            // jinak vratime null
-            throw new NotImplementedException();
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            // Dodelat SQL prikaz, ktery vrati Id, LoanAmount, InterestRate, LoanTerm
+            // bez pouziti *
+
+            command.CommandText =
+            @$"
+                SELECT Id, LoanAmount, InterestRate, LoanTerm FROM Mortgage WHERE Id = @Id
+            
+            ";
+
+            command.Parameters.Add("@Id", SqliteType.Integer).Value = id;
+
+            SqliteDataReader reader = await command.ExecuteReaderAsync();
+
+            if (reader.HasRows)
+            {
+                if (await reader.ReadAsync())
+                {
+                    Model model = new Model();
+
+                    model.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    model.LoanAmount = reader.GetDouble(reader.GetOrdinal("LoanAmount"));
+                    model.InterestRate = reader.GetDouble(reader.GetOrdinal("InterestRate"));
+                    model.LoanTerm = reader.GetInt32(reader.GetOrdinal("LoanTerm"));
+                    
+                    return model;
+                }
+            }
+
+            return null;
         }
 
         public async Task InsertAsync(Model model)
@@ -148,7 +180,7 @@ namespace SharedProject
 
             command.CommandText =
             @$"
-                
+                DELETE FROM Mortgage WHERE Id = @Id
             ";
 
             command.Parameters.Add("@Id", SqliteType.Integer).Value = model.Id;
