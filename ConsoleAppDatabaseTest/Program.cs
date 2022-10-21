@@ -9,6 +9,9 @@ if(await databaseService.EnsureCreatedAsync())
     await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
 }
 
+
+await databaseService.UpdateAsync(new Model(4800000.0, 5.6, 15) { Id = 1 });
+
 List<Model> models = await databaseService.GetAllAsync();
 
 foreach (Model model in models)

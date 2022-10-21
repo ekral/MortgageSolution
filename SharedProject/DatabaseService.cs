@@ -89,9 +89,11 @@ namespace SharedProject
 
         }
 
-        public async Task<Model> GetByIdAsync(int id)
+        public async Task<Model?> GetByIdAsync(int id)
         {
-            throw  new NotImplementedException();
+            // vratime prvni radek, ktery nacteme
+            // jinak vratime null
+            throw new NotImplementedException();
         }
 
         public async Task InsertAsync(Model model)
@@ -116,9 +118,6 @@ namespace SharedProject
 
         public async Task UpdateAsync(Model model) 
         {
-            // Zmenit LoanAmount, InterestRate a LoanTerm 
-            // u radku s id model.Id
-
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
 
@@ -142,7 +141,19 @@ namespace SharedProject
 
         public async Task DeleteAsync(Model model) 
         {
-            throw new NotImplementedException();
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            command.CommandText =
+            @$"
+                
+            ";
+
+            command.Parameters.Add("@Id", SqliteType.Integer).Value = model.Id;
+
+            int count = await command.ExecuteNonQueryAsync();
         }
     }
 }
