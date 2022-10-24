@@ -15,6 +15,7 @@ namespace AvaloniaAplication
 
         private readonly DatabaseService databaseService;
 
+
         private ObservableCollection<ViewModel> mortgages = null!;
         public ObservableCollection<ViewModel> Mortgages 
         { 
@@ -42,6 +43,7 @@ namespace AvaloniaAplication
         {
             this.databaseService = databaseService;
             Mortgages = new ObservableCollection<ViewModel>();
+            SelectedMortgage = null;
         }
 
         public async Task LoadMortgages()
@@ -54,10 +56,9 @@ namespace AvaloniaAplication
             SelectedMortgage = Mortgages.FirstOrDefault();
         }
 
-        public async Task SaveSelected()
+        public async Task Save()
         {
             // TODO dialog box
-
             if (SelectedMortgage is not null)
             {
                 await databaseService.UpdateAsync(SelectedMortgage.Model);

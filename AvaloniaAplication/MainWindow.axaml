@@ -32,7 +32,7 @@
 
 		<TextBlock Text="{Binding SelectedMortgage.MonthlyPayment, StringFormat='Monthly Payment: {0:C2}'}"/>
 
-		<Button Content="Save" Command="{Binding SaveSelected}"/>
+		<Button Content="Save" Command="{Binding Save}"/>
 
 	</StackPanel>
 </Window>
