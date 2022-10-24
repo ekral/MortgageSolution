@@ -9,15 +9,14 @@ using System.Threading.Tasks;
 
 namespace AvaloniaAplication
 {
-    public class MortagesViewModel : INotifyPropertyChanged
+    public class MortgagesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private readonly DatabaseService databaseService;
 
-
-        private ObservableCollection<ViewModel>? mortgages;
-        public ObservableCollection<ViewModel>? Mortgages 
+        private ObservableCollection<ViewModel> mortgages = null!;
+        public ObservableCollection<ViewModel> Mortgages 
         { 
             get => mortgages;
             set
@@ -39,16 +38,15 @@ namespace AvaloniaAplication
             }
         }
 
-        public MortagesViewModel(DatabaseService databaseService)
+        public MortgagesViewModel(DatabaseService databaseService)
         {
             this.databaseService = databaseService;
+            Mortgages = new ObservableCollection<ViewModel>();
         }
 
         public async Task LoadMortgages()
         {
-            System.Diagnostics.Debug.WriteLine("Loading Mortgages");
-            await Task.Delay(20000);
-            System.Diagnostics.Debug.WriteLine("After delay");
+            await Task.Delay(5000);
 
             List<Model> models = await databaseService.GetAllAsync();
 

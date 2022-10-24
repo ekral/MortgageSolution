@@ -20,7 +20,8 @@ namespace UnitTests
         [Fact]
         public void TestMonthlyPaymentValidInputValidMonthlyPayment()
         {
-            ViewModel viewModel = new MortgageViewModel();
+            Model model = new Model();
+            ViewModel viewModel = new ViewModel(model);
             viewModel.LoanAmount = 8000000.0;
             viewModel.InterestRate = 6.0;
             viewModel.LoanTerm = 30;
