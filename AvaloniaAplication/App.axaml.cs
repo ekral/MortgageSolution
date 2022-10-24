@@ -21,7 +21,7 @@ namespace AvaloniaAplication
                 // TODO prevest na IoC container
                 // zavolat EnsureCreated
 
-                MainViewModel mainViewModel = new MainViewModel(databaseService);
+                MortagesViewModel mainViewModel = new MortagesViewModel(databaseService);
                 desktop.MainWindow = new MortgagesListWindow() { DataContext = mainViewModel };
 
                 if(await databaseService.EnsureCreatedAsync())

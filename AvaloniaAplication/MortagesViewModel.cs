@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AvaloniaAplication
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MortagesViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -39,7 +39,7 @@ namespace AvaloniaAplication
             }
         }
 
-        public MainViewModel(DatabaseService databaseService)
+        public MortagesViewModel(DatabaseService databaseService)
         {
             this.databaseService = databaseService;
         }
