@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace AvaloniaAplication
 {
-    public class MortgageViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -56,7 +56,7 @@ namespace AvaloniaAplication
             }
         }
 
-        public MortgageViewModel(Model model)
+        public ViewModel(Model model)
         {
             this.Model = model;
             calculationService = new CalculationService();

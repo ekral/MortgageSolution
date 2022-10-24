@@ -22,7 +22,7 @@ namespace AvaloniaAplication
                 // zavolat EnsureCreated
 
                 MortagesViewModel mainViewModel = new MortagesViewModel(databaseService);
-                desktop.MainWindow = new MortgagesListWindow() { DataContext = mainViewModel };
+                desktop.MainWindow = new MainWindow() { DataContext = mainViewModel };
 
                 if(await databaseService.EnsureCreatedAsync())
                 {

@@ -16,8 +16,8 @@ namespace AvaloniaAplication
         private readonly DatabaseService databaseService;
 
 
-        private ObservableCollection<MortgageViewModel>? mortgages;
-        public ObservableCollection<MortgageViewModel>? Mortgages 
+        private ObservableCollection<ViewModel>? mortgages;
+        public ObservableCollection<ViewModel>? Mortgages 
         { 
             get => mortgages;
             set
@@ -27,9 +27,9 @@ namespace AvaloniaAplication
             }
         }
 
-        private MortgageViewModel? _selectedMortgage;
+        private ViewModel? _selectedMortgage;
 
-        public MortgageViewModel? SelectedMortgage
+        public ViewModel? SelectedMortgage
         {
             get => _selectedMortgage;
             set
@@ -46,9 +46,13 @@ namespace AvaloniaAplication
 
         public async Task LoadMortgages()
         {
+            System.Diagnostics.Debug.WriteLine("Loading Mortgages");
+            await Task.Delay(20000);
+            System.Diagnostics.Debug.WriteLine("After delay");
+
             List<Model> models = await databaseService.GetAllAsync();
 
-            Mortgages = new ObservableCollection<MortgageViewModel>(models.Select(x => new MortgageViewModel(x)));
+            Mortgages = new ObservableCollection<ViewModel>(models.Select(x => new ViewModel(x)));
             SelectedMortgage = Mortgages.FirstOrDefault();
         }
 
