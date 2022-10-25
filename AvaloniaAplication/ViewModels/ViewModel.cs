@@ -1,7 +1,7 @@
 ﻿using SharedProject;
 using System.ComponentModel;
 
-namespace AvaloniaAplication
+namespace AvaloniaAplication.ViewModels
 {
     public class ViewModel : INotifyPropertyChanged
     {
@@ -58,7 +58,7 @@ namespace AvaloniaAplication
 
         public ViewModel(Model model)
         {
-            this.Model = model;
+            Model = model;
             calculationService = new CalculationService();
 
             Calculate();

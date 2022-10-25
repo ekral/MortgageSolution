@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvaloniaAplication
+namespace AvaloniaAplication.ViewModels
 {
     public class MortgagesViewModel : INotifyPropertyChanged
     {
@@ -17,8 +17,8 @@ namespace AvaloniaAplication
 
 
         private ObservableCollection<ViewModel> mortgages = null!;
-        public ObservableCollection<ViewModel> Mortgages 
-        { 
+        public ObservableCollection<ViewModel> Mortgages
+        {
             get => mortgages;
             set
             {

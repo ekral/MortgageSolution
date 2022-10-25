@@ -1,4 +1,4 @@
-using AvaloniaAplication;
+using AvaloniaAplication.ViewModels;
 using SharedProject;
 
 namespace UnitTests
