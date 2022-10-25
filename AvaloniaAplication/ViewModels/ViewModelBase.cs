@@ -27,7 +27,7 @@ namespace AvaloniaAplication.ViewModels
             return true;
         }
 
-        public bool SetPropery<T, TModel>(T oldValue, T newValue, TModel model, Action<TModel, T> action, [CallerMemberName] string? propertyName = null)
+        public bool SetProperty<TModel, T>(T oldValue, T newValue, TModel model, Action<TModel, T> action, [CallerMemberName] string? propertyName = null)
         {
             ArgumentNullException.ThrowIfNull(model);
             ArgumentNullException.ThrowIfNull(propertyName);

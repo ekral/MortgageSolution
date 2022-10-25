@@ -3,10 +3,8 @@ using System.ComponentModel;
 
 namespace AvaloniaAplication.ViewModels
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class ViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public Model Model { get; }
 
         private readonly CalculationService calculationService;
@@ -16,9 +14,10 @@ namespace AvaloniaAplication.ViewModels
             get => Model.LoanAmount;
             set
             {
-                Model.LoanAmount = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanAmount)));
-                Calculate();
+                if(SetProperty(Model.LoanAmount, value, Model, (m,v) => m.LoanAmount = v))
+                {
+                    Calculate();
+                }
             }
         }
 
