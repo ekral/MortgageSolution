@@ -22,6 +22,10 @@ if (zmena is not null)
     await databaseService.UpdateAsync(zmena);
 }
 
+double average = await databaseService.GetLoanAmountAverageAsync();
+
+Console.WriteLine($"Loan Amount Average: {average:C1}");
+
 List<Model> models = await databaseService.GetAllAsync();
 
 foreach (Model model in models)

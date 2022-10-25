@@ -53,15 +53,68 @@ namespace SharedProject
             return true;
         }
 
-        public async Task<List<Model>> GetAllAsync()
+        public async Task<double> GetLoanAmountAverageAsync()
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
 
             SqliteCommand command = connection.CreateCommand();
 
-            // Dodelat SQL prikaz, ktery vrati Id, LoanAmount, InterestRate, LoanTerm
-            // bez pouziti *
+            command.CommandText =
+            @$"
+                SELECT AVG(LoanAmount) FROM Mortgage
+            ";
+
+            object? result = await command.ExecuteScalarAsync();
+
+            if(result is double average)
+            {
+                return average;
+            }
+
+            return 0.0;
+        }
+
+        public async Task<Model?> GetByIdAsync(int id)
+        {
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
+
+            command.CommandText =
+            @$"
+                SELECT Id, LoanAmount, InterestRate, LoanTerm FROM Mortgage WHERE Id = @Id
+            ";
+
+            command.Parameters.Add("@Id", SqliteType.Integer).Value = id;
+
+            SqliteDataReader reader = await command.ExecuteReaderAsync();
+
+            if (reader.HasRows)
+            {
+                if (await reader.ReadAsync())
+                {
+                    Model model = new Model();
+
+                    model.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    model.LoanAmount = reader.GetDouble(reader.GetOrdinal("LoanAmount"));
+                    model.InterestRate = reader.GetDouble(reader.GetOrdinal("InterestRate"));
+                    model.LoanTerm = reader.GetInt32(reader.GetOrdinal("LoanTerm"));
+
+                    return model;
+                }
+            }
+
+            return null;
+        }
+
+        public async Task<List<Model>> GetAllAsync()
+        {
+            await using SqliteConnection connection = new SqliteConnection(connectionString);
+            await connection.OpenAsync();
+
+            SqliteCommand command = connection.CreateCommand();
 
             command.CommandText =
             @$"
@@ -86,46 +139,8 @@ namespace SharedProject
                     models.Add(model);
                 }
             }
+
             return models;
-
-        }
-
-        public async Task<Model?> GetByIdAsync(int id)
-        {
-            await using SqliteConnection connection = new SqliteConnection(connectionString);
-            await connection.OpenAsync();
-
-            SqliteCommand command = connection.CreateCommand();
-
-            // Dodelat SQL prikaz, ktery vrati Id, LoanAmount, InterestRate, LoanTerm
-            // bez pouziti *
-
-            command.CommandText =
-            @$"
-                SELECT Id, LoanAmount, InterestRate, LoanTerm FROM Mortgage WHERE Id = @Id
-            
-            ";
-
-            command.Parameters.Add("@Id", SqliteType.Integer).Value = id;
-
-            SqliteDataReader reader = await command.ExecuteReaderAsync();
-
-            if (reader.HasRows)
-            {
-                if (await reader.ReadAsync())
-                {
-                    Model model = new Model();
-
-                    model.Id = reader.GetInt32(reader.GetOrdinal("Id"));
-                    model.LoanAmount = reader.GetDouble(reader.GetOrdinal("LoanAmount"));
-                    model.InterestRate = reader.GetDouble(reader.GetOrdinal("InterestRate"));
-                    model.LoanTerm = reader.GetInt32(reader.GetOrdinal("LoanTerm"));
-                    
-                    return model;
-                }
-            }
-
-            return null;
         }
 
         public async Task InsertAsync(Model model)
