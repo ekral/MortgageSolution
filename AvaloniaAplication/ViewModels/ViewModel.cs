@@ -26,9 +26,10 @@ namespace AvaloniaAplication.ViewModels
             get => Model.InterestRate;
             set
             {
-                Model.InterestRate = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(InterestRate)));
-                Calculate();
+                if (SetProperty(Model.InterestRate, value, Model, (m, v) => m.InterestRate = v))
+                {
+                    Calculate();
+                }
             }
         }
 
@@ -37,22 +38,19 @@ namespace AvaloniaAplication.ViewModels
             get => Model.LoanTerm;
             set
             {
-                Model.LoanTerm = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoanTerm)));
-                Calculate();
+                if (SetProperty(Model.LoanTerm, value, Model, (m, v) => m.LoanTerm = v))
+                {
+                    Calculate();
+                }
             }
         }
 
-        private double _monthlyPayment;
+        private double monthlyPayment;
 
         public double MonthlyPayment
         {
-            get => _monthlyPayment;
-            private set
-            {
-                _monthlyPayment = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(MonthlyPayment)));
-            }
+            get => monthlyPayment;
+            private set => SetProperty(ref monthlyPayment, value);
         }
 
         public ViewModel(Model model)

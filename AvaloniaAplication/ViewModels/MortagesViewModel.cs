@@ -9,34 +9,23 @@ using System.Threading.Tasks;
 
 namespace AvaloniaAplication.ViewModels
 {
-    public class MortgagesViewModel : INotifyPropertyChanged
+    public class MortgagesViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         private readonly DatabaseService databaseService;
-
 
         private ObservableCollection<ViewModel> mortgages = null!;
         public ObservableCollection<ViewModel> Mortgages
         {
             get => mortgages;
-            set
-            {
-                mortgages = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mortgages)));
-            }
+            set => SetProperty(ref mortgages, value);
         }
 
-        private ViewModel? _selectedMortgage;
+        private ViewModel? selectedMortgage;
 
         public ViewModel? SelectedMortgage
         {
-            get => _selectedMortgage;
-            set
-            {
-                _selectedMortgage = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedMortgage)));
-            }
+            get => selectedMortgage;
+            set => SetProperty(ref selectedMortgage, value);
         }
 
         public MortgagesViewModel(DatabaseService databaseService)
