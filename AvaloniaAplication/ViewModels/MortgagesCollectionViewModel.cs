@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace AvaloniaAplication.ViewModels
 {
-    public class MortgagesViewModel : ViewModelBase
+    public class MortgagesCollectionViewModel : ViewModelBase
     {
         private readonly DatabaseService databaseService;
 
-        private ObservableCollection<ViewModel> mortgages = null!;
-        public ObservableCollection<ViewModel> Mortgages
+        private ObservableCollection<MortgageViewModel> mortgages = null!;
+        public ObservableCollection<MortgageViewModel> Mortgages
         {
             get => mortgages;
             set => SetProperty(ref mortgages, value);
         }
 
-        private ViewModel? selectedMortgage;
+        private MortgageViewModel? selectedMortgage;
 
-        public ViewModel? SelectedMortgage
+        public MortgageViewModel? SelectedMortgage
         {
             get => selectedMortgage;
             set => SetProperty(ref selectedMortgage, value);
         }
 
-        public MortgagesViewModel(DatabaseService databaseService)
+        public MortgagesCollectionViewModel(DatabaseService databaseService)
         {
             this.databaseService = databaseService;
-            Mortgages = new ObservableCollection<ViewModel>();
+            Mortgages = new ObservableCollection<MortgageViewModel>();
             SelectedMortgage = null;
         }
 
@@ -41,7 +41,7 @@ namespace AvaloniaAplication.ViewModels
 
             List<Model> models = await databaseService.GetAllAsync();
 
-            Mortgages = new ObservableCollection<ViewModel>(models.Select(x => new ViewModel(x)));
+            Mortgages = new ObservableCollection<MortgageViewModel>(models.Select(x => new MortgageViewModel(x)));
             SelectedMortgage = Mortgages.FirstOrDefault();
         }
 

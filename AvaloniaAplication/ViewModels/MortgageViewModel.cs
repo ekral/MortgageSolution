@@ -1,9 +1,8 @@
 ﻿using SharedProject;
-using System.ComponentModel;
 
 namespace AvaloniaAplication.ViewModels
 {
-    public class ViewModel : ViewModelBase
+    public class MortgageViewModel : ViewModelBase
     {
         public Model Model { get; }
 
@@ -53,7 +52,7 @@ namespace AvaloniaAplication.ViewModels
             private set => SetProperty(ref monthlyPayment, value);
         }
 
-        public ViewModel(Model model)
+        public MortgageViewModel(Model model)
         {
             Model = model;
             calculationService = new CalculationService();

@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using AvaloniaAplication.ViewModels;
+using AvaloniaAplication.Views;
 using SharedProject;
 
 namespace AvaloniaAplication
@@ -15,13 +16,12 @@ namespace AvaloniaAplication
 
         public override async void OnFrameworkInitializationCompleted()
         {
-            // TODO prevest na IoC container
             DatabaseService databaseService = new DatabaseService();
-            MortgagesViewModel mortgagesViewModel = new MortgagesViewModel(databaseService);
+            MortgagesCollectionViewModel mortgagesViewModel = new MortgagesCollectionViewModel(databaseService);
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow() { DataContext = mortgagesViewModel };
+                desktop.MainWindow = new MortgagesWindow() { DataContext = mortgagesViewModel };
             }
 
             base.OnFrameworkInitializationCompleted();

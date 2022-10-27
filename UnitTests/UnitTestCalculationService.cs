@@ -21,7 +21,7 @@ namespace UnitTests
         public void TestMonthlyPaymentValidInputValidMonthlyPayment()
         {
             Model model = new Model();
-            ViewModel viewModel = new ViewModel(model);
+            MortgageViewModel viewModel = new MortgageViewModel(model);
             viewModel.LoanAmount = 8000000.0;
             viewModel.InterestRate = 6.0;
             viewModel.LoanTerm = 30;
