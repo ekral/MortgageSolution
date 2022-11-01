@@ -17,11 +17,11 @@ namespace AvaloniaAplication
         public override async void OnFrameworkInitializationCompleted()
         {
             DatabaseService databaseService = new DatabaseService();
-            MortgagesCollectionViewModel mortgagesViewModel = new MortgagesCollectionViewModel(databaseService);
+            MortgagesCollectionViewModel viewModel = new MortgagesCollectionViewModel(databaseService);
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MortgagesWindow() { DataContext = mortgagesViewModel };
+                desktop.MainWindow = new MortgagesWindow() { DataContext = viewModel };
             }
 
             base.OnFrameworkInitializationCompleted();
@@ -32,8 +32,6 @@ namespace AvaloniaAplication
                 await databaseService.InsertAsync(new Model(4000000.0, 5.7, 20));
                 await databaseService.InsertAsync(new Model(10800000.0, 5.8, 15));
             }
-
-            await mortgagesViewModel.LoadMortgages();
         }
     }
 }
