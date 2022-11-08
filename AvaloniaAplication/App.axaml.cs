@@ -14,7 +14,7 @@ namespace AvaloniaAplication
             AvaloniaXamlLoader.Load(this);
         }
 
-        public override async void OnFrameworkInitializationCompleted()
+        public override void OnFrameworkInitializationCompleted()
         {
             DatabaseService databaseService = new DatabaseService();
             MortgagesCollectionViewModel viewModel = new MortgagesCollectionViewModel(databaseService);

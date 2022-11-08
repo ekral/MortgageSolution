@@ -50,9 +50,17 @@ namespace SharedProject
 
             await command.ExecuteNonQueryAsync();
 
+            await InitDataAsync();
+
             return true;
         }
 
+        private async Task InitDataAsync()
+        {
+            await InsertAsync(new Model(8000000.0, 6.0, 30));
+            await InsertAsync(new Model(4000000.0, 5.7, 20));
+            await InsertAsync(new Model(10800000.0, 5.8, 15));
+        }
         public async Task<double> GetLoanAmountAverageAsync()
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
@@ -109,6 +117,7 @@ namespace SharedProject
             return null;
         }
 
+        
         public async Task<List<Model>> GetAllAsync()
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
