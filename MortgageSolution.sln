@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaAplication", "Avalo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{ACF2CB40-9B76-46DA-91FF-83DD4565D31C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppDatabaseTest", "ConsoleAppDatabaseTest\ConsoleAppDatabaseTest.csproj", "{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppDatabaseTest", "ConsoleAppDatabaseTest\ConsoleAppDatabaseTest.csproj", "{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplicationSimple", "AvaloniaApplicationSimple\AvaloniaApplicationSimple.csproj", "{25BE6878-EAC9-4638-BE2C-91A5DA3A7EAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76D8AFDF-8BB9-4AE3-B954-DE330DEC2712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25BE6878-EAC9-4638-BE2C-91A5DA3A7EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25BE6878-EAC9-4638-BE2C-91A5DA3A7EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25BE6878-EAC9-4638-BE2C-91A5DA3A7EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25BE6878-EAC9-4638-BE2C-91A5DA3A7EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
