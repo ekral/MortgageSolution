@@ -7,7 +7,7 @@ namespace AvaloniaApplicationSimple.ViewModels
 {
     public class ViewModel : ViewModelBase
     {
-        private readonly DatabaseService _databaseService = new();
+        private readonly DatabaseServiceAdoNet _databaseService = new();
 
         private ObservableCollection<Model> _mortgages = new();
         public ObservableCollection<Model> Mortgages
