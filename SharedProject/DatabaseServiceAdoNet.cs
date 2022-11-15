@@ -1,24 +1,18 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharedProject
 {
-    public class DatabaseService
+    public class DatabaseServiceAdoNet : IDatabaseService
     {
         private const string fileName = "database.db";
         private readonly string path;
         private readonly string connectionString;
-        
-        public DatabaseService()
+
+        public DatabaseServiceAdoNet()
         {
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             path = Path.Join(folder, fileName);
-            
+
             SqliteConnectionStringBuilder builder = new SqliteConnectionStringBuilder();
             builder.DataSource = path;
 
@@ -75,7 +69,7 @@ namespace SharedProject
 
             object? result = await command.ExecuteScalarAsync();
 
-            if(result is double average)
+            if (result is double average)
             {
                 return average;
             }
@@ -117,7 +111,7 @@ namespace SharedProject
             return null;
         }
 
-        
+
         public async Task<List<Model>> GetAllAsync()
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
@@ -134,9 +128,9 @@ namespace SharedProject
 
             SqliteDataReader reader = await command.ExecuteReaderAsync();
 
-            if(reader.HasRows)
+            if (reader.HasRows)
             {
-                while(await reader.ReadAsync())
+                while (await reader.ReadAsync())
                 {
                     Model model = new Model();
 
@@ -168,11 +162,11 @@ namespace SharedProject
             command.Parameters.Add("@LoanAmount", SqliteType.Real).Value = model.LoanAmount;
             command.Parameters.Add("@InterestRate", SqliteType.Real).Value = model.InterestRate;
             command.Parameters.Add("@LoanTerm", SqliteType.Integer).Value = model.LoanTerm;
-       
+
             int count = await command.ExecuteNonQueryAsync();
         }
 
-        public async Task UpdateAsync(Model model) 
+        public async Task UpdateAsync(Model model)
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();
@@ -195,7 +189,7 @@ namespace SharedProject
             int count = await command.ExecuteNonQueryAsync();
         }
 
-        public async Task DeleteAsync(Model model) 
+        public async Task DeleteAsync(Model model)
         {
             await using SqliteConnection connection = new SqliteConnection(connectionString);
             await connection.OpenAsync();

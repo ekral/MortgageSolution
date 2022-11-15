@@ -11,7 +11,7 @@ namespace AvaloniaAplication.ViewModels
 {
     public class MortgagesCollectionViewModel : ViewModelBase
     {
-        private readonly DatabaseService databaseService;
+        private readonly DatabaseServiceAdoNet databaseService;
 
         private ObservableCollection<MortgageViewModel> mortgages = null!;
         public ObservableCollection<MortgageViewModel> Mortgages
@@ -28,7 +28,7 @@ namespace AvaloniaAplication.ViewModels
             set => SetProperty(ref selectedMortgage, value);
         }
 
-        public MortgagesCollectionViewModel(DatabaseService databaseService)
+        public MortgagesCollectionViewModel(DatabaseServiceAdoNet databaseService)
         {
             this.databaseService = databaseService;
             Mortgages = new ObservableCollection<MortgageViewModel>();

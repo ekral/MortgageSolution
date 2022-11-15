@@ -16,7 +16,7 @@ namespace AvaloniaAplication
 
         public override void OnFrameworkInitializationCompleted()
         {
-            DatabaseService databaseService = new DatabaseService();
+            DatabaseServiceAdoNet databaseService = new DatabaseServiceAdoNet();
             MortgagesCollectionViewModel viewModel = new MortgagesCollectionViewModel(databaseService);
             
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)

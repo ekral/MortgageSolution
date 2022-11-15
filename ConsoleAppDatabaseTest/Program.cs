@@ -1,6 +1,6 @@
 ﻿using SharedProject;
 
-DatabaseService databaseService = new DatabaseService();
+DatabaseServiceAdoNet databaseService = new DatabaseServiceAdoNet();
 
 if(await databaseService.EnsureCreatedAsync())
 {
