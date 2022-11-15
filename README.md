@@ -9,4 +9,4 @@ Solution obsahující výchozí kód pro práci s databází s pomocí databáze
 
 Poznámky pro Entity Framework:
 - Na školních počítačích použijte v terminálu příkaz  $env:Path = "D:\dotnet;C:\Users\ekral\\.dotnet\tools" kde změňte uživatelské jméno a případně cestu k souboru dotnet.exe.
-- Návod pro Entity Framework: [Getting Started with EF Core](https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli#create-the-database)
+- Návod pro Entity Framework: [Getting Started with EF Core](https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli#install-entity-framework-core)
