@@ -8,5 +8,5 @@ Solution obsahující výchozí kód pro práci s databází s pomocí databáze
 4. Použijte Entity Framework včetně migrací pro aplikaci. Vytvořte rozhraní IDatabaseService a dvě implementace DatabaseServiceEntityFramework a DatabaseServiceAdoNet.
 
 Poznámky pro Entity Framework:
-- Na školních počítačích použijte v terminálu příkaz  $env:Path = "D:\dotnet;C:\Users\ekral\.dotnet\tools" kde změňte cestu k souboru dotnet a uživatelské jméno.
+- Na školních počítačích použijte v terminálu příkaz  $env:Path = "D:\dotnet;C:\Users\ekral\\.dotnet\tools" kde změňte cestu k souboru dotnet a uživatelské jméno.
 - Návod pro Entity Framework: [Getting Started with EF Core](https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli#create-the-database)
